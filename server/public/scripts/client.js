@@ -57,13 +57,17 @@ function handleDivide() {
 
 function handleCalculate() {
   console.log('Entering handleCalculate');
-  
+
   let numberOne = $('#numberOne').val();
   let numberTwo = $('#numberTwo').val();
 
+  if(operator == '/' && numberTwo == '0') {
+    $('#currentTotal').text('CAN NOT DIVIDE BY 0');
+    console.log('Exiting handleCalculate');
+    return;
+  }
   let calc = new Calculation(numberOne, numberTwo, operator);
   console.log(calc);
-  console.log('Exiting handleCalculate');
 $.ajax({
   url: '/inputValues',
   method: 'POST',
@@ -74,8 +78,8 @@ $.ajax({
   }
 }).done(function(response) {
   console.log(response);
-  //getAnswer();
-  //getEquation();
+  getAnswer();
+  getEquation();
 
 }).fail(function(errorResponse) {
   console.log(errorResponse);
@@ -84,8 +88,41 @@ $.ajax({
 console.log('Exiting handleCalculate');
 }
 
+function getAnswer() {
+  $.ajax({
+    url: '/answer',
+    method: 'GET'
+  }).done(function( response ) {
+    console.log( response );
+    displayNum( response );
+  }).fail(function(errorResponse) {
+    console.log(errorResponse);
+  })
+}
+
+function getEquation() {
+  $.ajax({
+    url: '/equation',
+    method: 'GET'
+  }).done(function( response ) {
+    console.log( response );
+    displayEquation( response );
+  }).fail(function( errorResponse ) {
+    console.log( errorResponse );
+  })
+}
+
+function displayNum( response ) {
+  $('#currentTotal').text( response );
+}
+
+function displayEquation( response ) {
+  $('#history').append( `<li>${response}</li>` );
+}
+
 function handleReset() {
   console.log('Entering handleReset');
-
+  $('#currentTotal').empty();
+  $('#history').empty();
   console.log('Exiting handleReset');
 }

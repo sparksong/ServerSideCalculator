@@ -4,35 +4,38 @@
     <meta charset="utf-8">
     <title>Server Side Calculator</title>
   </head>
-  <body>
-    <div>
-        <h1>Weekend Challenge #2</h1>
-    </div>
-    <div>
-      <h2>Server Side Calculator</h2>
-    </div>
-    <div>
-      <form>
-        <input id="numberOne" type="number" value="numberOne" placeholder="Number one"/>
-        <input id="addButton" type="button" name="add" value="+"/>
-        <input id="subtractButton" type="button" name="subtract" value="-"/>
-        <input id="multiplyButton" type="button" name="multiply" value="*"/>
-        <input id="divideButton" type="button" name="divide" value="/"/>
-        <input id="numberTwo" type="number" value="numberTwo" placeholder="Number two"/>
-        <input id="calculateButton" type="button" name="calculate" value="="/>
-        <input id="resetButton" type="reset" value="C"/>
-      </form>
+  <body style="background-color:#7788B2;">
+    <div style="border: 4px solid black; margin: 100px; padding: 30px; height: 300px; width: 25%; background-color:#E9E7F9;">
+      <div>
+          <h1>Server Side Calculator</h1>
+      </div>
+      <div>
+        <form>
+          <div>
+            <input id="numberOne" type="number" value="numberOne" placeholder="Number one"/>
+            <input id="numberTwo" type="number" value="numberTwo" placeholder="Number two"/>
+          </div>
+        <hr>
+
+          <div>
+            <input id="addButton" class="buttonStyle" type="button" name="add" value="+"/>
+            <input id="subtractButton" class="buttonStyle" type="button" name="subtract" value="-"/>
+            <input id="multiplyButton" class="buttonStyle" type="button" name="multiply" value="*"/>
+            <input id="divideButton" class="buttonStyle" type="button" name="divide" value="/"/>
+            <input id="calculateButton" class="buttonStyle" type="button" name="calculate" value="="/>
+            <input id="resetButton" class="buttonStyle" type="reset" value="C"/>
+          </div>
+        </form>
+      </div>
+
+      <div id="currentTotal">
+      </div>
     </div>
 
-    <div id="currentTotal">
-
-    </div>
     <div>
       <ul id="history">
-
       </ul>
     </div>
-
 
     <script src="vendors/jquery-3.3.1.min.js"></script>
       <script src="scripts/client.js"></script>
